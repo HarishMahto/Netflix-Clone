@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>User Profile</title>
+		<style>
+			body {
+				background-color: black;
+			}
+			h1{
+				color: red;
+				text-align: center;
+			}
+			h4,p{
+				color: rgb(255, 255, 255);
+				text-align: center;
+			}
+			table{
+				color: rgb(255, 0, 0);
+				text-align: justify;
+				padding: 12px;
+				column-width: 20px;
+				display: flex;
+				justify-content: center;
+			}
+			td{
+				color: yellow;
+			}
+
+			.card {
+				box-shadow: 0 4px 8px 0 rgb(241, 10, 10);
+				transition: 0.3s;
+				width: 30%;
+				height: 50%;
+				margin-left: 35%;
+	
+			}
+			.card:hover {
+				box-shadow: 0 8px 16px 0 rgb(255, 255, 255);
+			}
+			.container {
+				padding: 2px 16px;
+				
+			}
+			img{
+				height: 100%;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+			}
+
+		</style>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+		</script>
+		<script>
+		$(document).ready(function(){
+		$("#flip").click(function(){
+				$("#panel").slideToggle("fast");
+		});
+		});
+		</script>
+	</head>
+	<body>
+		<h1>User Profile</h1> 
+		
+		<div class="card">
+			<img src="harish.jpg" alt="Profile_Pic" >
+			<div class="container" id="flip">
+			  <h4><b>Harish Mahto</b></h4>
+			  <p>Fullstack Web and App Developer</p>
+			</div>
+			<div id="panel">
+				<table>
+					<tr>
+						<th>User ID:</th>
+						<td>14032003</td>
+					</tr>
+					<tr>
+						<th>Subscription:</th>
+						<td>Unlimited</td>
+					</tr>
+					<tr>
+						<th>DOB:</th>
+						<td>21/01/2003</td>
+					</tr>
+					<tr>
+						<th>email ID:</th>
+						<td>harish@gamil.com</td>
+					</tr>
+					<tr>
+						<th>Password:</th>
+						<td>Qwerty123</td>
+					</tr>
+				</table>
+
+			</div>
+		</div>
+
+		
+	</body>
+</html>

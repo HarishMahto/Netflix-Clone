@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+
+		<style>
+			body {
+				background-color: black;
+			}
+			h1{
+				color: red;
+				text-align: center;
+			}
+			h2{
+				color: white;
+				text-align: left;
+			}
+		
+			ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				background-color: red;
+			}
+			li {
+				float: left;
+			}
+			li a {
+				display: block;
+				color: white;
+				padding: 12px 15px;
+			}
+			li a:hover {
+				background-color: black;
+			}
+			
+			div{
+				display: inline-block;
+			}
+			.zoom {
+				transition: transform .2s; /* Animation */
+				width: 200;
+				height: 350;
+				margin: 0 auto;
+			}
+
+			.zoom:hover {
+				transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+			}
+			
+			div.scroll-container {
+				background-color: #333;
+				overflow:auto;
+				white-space: nowrap;
+				padding: 20px;
+				width: 100%;
+			}
+
+			div.scroll-container img {
+				padding: 20px;
+			}
+
+			* {box-sizing: border-box;}
+			body {font-family: Verdana, sans-serif;}
+			.mySlides {display: none;}
+			img {vertical-align: middle;}
+
+			/* Slideshow container */
+			.slideshow-container {
+			max-width: 1000px;
+			position: relative;
+			margin: auto;
+			}
+
+			.text {
+			color: #ff0000;
+			font-size: 30px;
+			padding: 8px 12px;
+			position: absolute;
+			text-align:center;
+			}
+			
+
+			.numbertext {
+			color: #f2f2f2;
+			font-size: 12px;
+			padding: 8px 12px;
+			position: absolute;
+			top: 0;
+			}
+
+			.dot {
+			height: 15px;
+			width: 15px;
+			margin: 0 2px;
+			background-color: #bbb;
+			border-radius: 50%;
+			display: inline-block;
+			transition: background-color 0.6s ease;
+			}
+
+			.active {
+			background-color: #717171;
+			}
+
+			.fade {
+			animation-name: fade;
+			animation-duration: 1.5s;
+			}
+
+			@keyframes fade {
+			from {opacity: .4} 
+			to {opacity: 1}
+			}
+
+			@media only screen and (max-width: 300px) {
+			.text {font-size: 11px}
+			}
+
+			.img1:hover {
+			content: url("N.jpg");
+			} 
+
+			/* parallax effect */
+			.parallax {
+			background-image: url("N.jpg");
+			
+			min-height: 500px;
+
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			}
+
+			.mySlides {display:none;}
+
+			.footer {
+			position:relative;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			background: radial-gradient(circle, rgba(115,12,50,1) 5%, rgba(13,12,12,1) 60%);
+			color: rgb(255, 255, 255);
+			text-align: center;
+			min-height: 250px;
+			}
+
+			.footertext{
+				margin-top: 100px;
+			}
+
+			/*try Swiper*/
+			.recipe-container2 {
+			background: rgba(189, 181, 181, 0.1);
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(20px);
+			-webkit-backdrop-filter: blur(20px);
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			padding: 15px 0;
+		
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 1500px;
+			margin: auto;
+			}
+		
+			/*Swiper*/
+			@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&family=Roboto:wght@500;700&display=swap");
+
+			:root {
+			--clr-text: hsl(0, 0%, 100%);
+			}
+
+			* {
+			box-sizing: border-box;
+			padding: 0;
+			margin: 0;
+			font-family: "Quicksand", sans-serif;
+			}
+
+			.body2 {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: radial-gradient(circle, rgba(115,12,50,1) 5%, rgba(13,12,12,1) 60%);
+			min-height: 100vh;
+			}
+
+			section {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			padding: 60px;
+			}
+
+			.recipe-container {
+			background: rgba(189, 181, 181, 0.1);
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(20px);
+			-webkit-backdrop-filter: blur(20px);
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			border-radius: 25px;
+			padding: 30px 0;
+			width: min(1200px, 100%);
+			}
+
+			.recipe-container > h1 {
+			font-size: 2rem;
+			font-weight: 600;
+			text-align: center;
+			color: #dda3b6;
+			margin: 20px 0 40px;
+			}
+
+			.swiper {
+			width: 98%;
+			height: 100%;
+			margin-bottom: 10px;
+			}
+
+			.swiper-scrollbar {
+			--swiper-scrollbar-bottom: 0;
+			--swiper-scrollbar-drag-bg-color: #dda3b6;
+			--swiper-scrollbar-size: 5px;
+			}
+
+			.post {
+			max-width: 400px;
+			font-size: 1rem;
+			font-weight: 500;
+			color: var(--clr-text);
+			background: rgba(236, 149, 200, 0.2);
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+			padding: 16px 16px 0;
+			margin-bottom: 16px;
+			}
+
+			.post-img {
+			width: 100%;
+			max-width: 400px;
+			object-fit: cover;
+			overflow: hidden;
+			aspect-ratio: 4/3;
+			border-radius: 6px;
+			user-select: none;
+			pointer-events: none;
+			}
+
+			.post-body {
+			display: grid;
+			grid-template-columns: 15% 60% 20%;
+			align-items: center;
+			gap: 8px;
+			padding: 15px 0;
+			cursor: default;
+			}
+
+			.post-name {
+			font-size: 0.9rem;
+			font-weight: 600;
+			margin-bottom: 2px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			}
+
+			.post-author {
+			width: fit-content;
+			font-size: 0.8rem;
+			font-weight: 600;
+			opacity: 0.6;
+			color: var(--clr-text);
+			}
+
+			.post-avatar {
+			width: 40px;
+			aspect-ratio: 1/1;
+			object-fit: cover;
+			border-radius: 5px;
+			cursor: pointer;
+			}
+
+			.post-actions {
+			position: relative;
+			}
+
+			.post-actions-content {
+			position: absolute;
+			bottom: 130%;
+			right: 0;
+			padding: 8px;
+			border-radius: 8px;
+			background: rgba(172, 172, 172, 0.2);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			box-shadow: 2px 2px 10px 2px hsl(0, 0%, 0%, 0.25);
+			transition: opacity 0.25s, scale 0.25s;
+			transform-origin: bottom right;
+			}
+
+			.post-actions-content[data-visible="false"] {
+			pointer-events: none;
+			opacity: 0;
+			scale: 0;
+			}
+
+			.post-actions-content[data-visible="true"] {
+			pointer-events: unset;
+			scale: 1;
+			opacity: 1;
+			}
+
+			.post-actions-content li {
+			padding: 0.5rem 0.65rem;
+			border-radius: 0.25rem;
+			list-style: none;
+			}
+
+			.post-actions-content li:is(:hover, :focus-within) {
+			background-color: rgba(248, 132, 169, 0.7);
+			}
+
+			.post-actions-link {
+			width: max-content;
+			display: grid;
+			grid-template-columns: 1rem 1fr;
+			align-items: center;
+			gap: 0.6rem;
+			color: inherit;
+			text-decoration: none;
+			cursor: pointer;
+			}
+
+			.post-like {
+			text-decoration: none;
+			color: var(--clr-text);
+			margin-right: 5px;
+			font-size: 1.1rem;
+			opacity: 0.65;
+			border-radius: 50%;
+			overflow: hidden;
+			transition: all 0.35s ease;
+			}
+
+			.post-actions-controller {
+			border: 0;
+			background: none;
+			color: var(--clr-text);
+			cursor: pointer;
+			opacity: 0.65;
+			}
+
+			.post-like:hover,
+			.post-actions-controller:hover {
+			opacity: 1;
+			}
+
+			.post-like:focus {
+			outline: none;
+			}
+
+			.post-like.active {
+			color: rgb(255, 0, 0);
+			opacity: 1;
+			transform: scale(1.2);
+			}
+
+			/* MEDIA QUERIES */
+
+			@media (max-width: 1200px) { 
+			.swiper {
+				width: 80%;
+				}
+			}
+
+			@media (max-width: 900px) {
+			#recipes {
+				padding: 60px 80px;
+			}
+
+			.swiper {
+				width: 50%;
+			}
+			}
+
+			@media (max-width: 765px) {
+			.swiper {
+				width: 70%;
+			}
+			}
+
+			@media (max-width: 550px) {
+			#recipes {
+				padding: 40px 40px;
+			}
+
+			.swiper {
+				width: 80%;
+			}
+			}
+
+
+			
+				
+		</style>
+
+		<script>
+
+			var slideIndex = 1;
+			showDivs(slideIndex);
+
+			function plusDivs(n) {
+			showDivs(slideIndex += n);
+			}
+
+			function showDivs(n) {
+			var i;
+			var x = document.getElementsByClassName("mySlides");
+			if (n > x.length) {slideIndex = 1}
+			if (n < 1) {slideIndex = x.length} ;
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			x[slideIndex-1].style.display = "block";
+			}
+		
+		</script>
+
+
+	</head>
+	<body>
+
+
+
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+				<a class="navbar-brand" href="#">NETFLIX</a>
+			  </div>
+			  <ul class="nav navbar-nav">
+				<li class="active"><a href="Splash.html">Home</a></li>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+					<li><a href="#h">Hollywood</a></li>
+					<li><a href="#b">Bollywood</a></li>
+					<li><a href="#a">Animated</a></li>
+				  </ul>
+				</li>
+
+				<li><a href="History.html">My History</a></li>
+			  </ul>
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="Profile.html"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
+				<li><a href="Signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+			  </ul>
+			</div>
+		  </nav>
+
+		<h1><img src="Netfix.png" height="100" width="300"></h1>
+
+		<hr>
+		<center>
+
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators" style="display: flex; justify-content: center;">
+			  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			  <li data-target="#myCarousel" data-slide-to="1"></li>
+			  <li data-target="#myCarousel" data-slide-to="2"></li>
+			  <li data-target="#myCarousel" data-slide-to="3"></li>
+			  <li data-target="#myCarousel" data-slide-to="4"></li>
+			  <li data-target="#myCarousel" data-slide-to="5"></li>
+			</ol>
+		
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+		
+			  <div class="item active">
+				<video width="854" height="480" controls autoplay>
+					<source src="avatar.mp4" type="video/mp4">
+					  Your browser does not support the video tag.
+				  </video>
+				<div class="carousel-caption">
+				  <h3>Avatar</h3>
+				  <p>Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.</p>
+				</div>
+			  </div>
+		
+			  <div class="item">
+				<video width="854" height="480" controls autoplay>
+					<source src="Dunki.mp4" type="video/mp4">
+				  </video>
+				<div class="carousel-caption">
+				  <h3>Dunki</h3>
+				  <p>Four friends from a village in Punjab share a common dream: to go to England. Their problem is that they have neither the visa nor the ticket. A soldier promises to take them to the land of their dreams.</p>
+				</div>
+			  </div>
+
+			  <div class="item">
+				<video width="854" height="480" controls autoplay>
+					<source src="ANIMAL.mp4" type="video/mp4">
+				  </video>
+				<div class="carousel-caption">
+				  <h3>Animal</h3>
+				  <p>A son's love for his father. Often away due to work the father is unable to comprehend the intensity of his son's love. Ironically, this fervent love and admiration for his father and family creates conflict between the father and son.</p>
+				</div>
+			  </div>
+
+			  <div class="item">
+				<video width="854" height="480" controls autoplay>
+					<source src="Kingdom of the Planet of the Apes.mp4" type="video/mp4">
+				  </video>
+				<div class="carousel-caption">
+				  <h3>Kingdom of the Planet of the Apes</h3>
+				  <p>Many years after the reign of Caesar, a young ape goes on a journey that will lead him to question everything he's been taught about the past and make choices that will define a future for apes and humans alike.</p>
+				</div>
+			  </div>
+
+			  <div class="item">
+				<video width="854" height="480" controls autoplay>
+					<source src="Salaar.mp4" type="video/mp4">
+				  </video>
+				<div class="carousel-caption">
+				  <h3>Salaar</h3>
+				  <p>A gang leader tries to keep a promise made to his dying friend and takes on the other criminal gangs.</p>
+				</div>
+			  </div>
+
+			  <div class="item">
+				<video width="854" height="480" controls autoplay>
+					<source src="Welcome.mp4" type="video/mp4">
+				  </video>
+				<div class="carousel-caption">
+				  <h3>Welcome To The Jungle</h3>
+				  <p>Police officers Jay Bakshi and Sandhya have been given task to track down notorious criminal Raj Solanki. Things take an unexpected turn when JaY finds out that Raj plays a significant role in his life.</p>
+				</div>
+			  </div>
+		
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			  <span class="glyphicon glyphicon-chevron-left"></span>
+			  <span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+			  <span class="glyphicon glyphicon-chevron-right"></span>
+			  <span class="sr-only">Next</span>
+			</a>
+		  </div>
+
+		</center>
+
+		<script type="text/javascript">
+			(function(d, t) {
+				var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+				v.onload = function() {
+				  window.voiceflow.chat.load({
+					verify: { projectID: '6611efa66a2963a2d48c45dd' },
+					url: 'https://general-runtime.voiceflow.com',
+					versionID: 'production'
+				  });
+				}
+				v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+			})(document, 'script');
+		  </script>
+
+	<div class="parallax" id="b">
+
+		<h2 id="h">Hollywood</h2>
+			<div class="recipe-container2">
+				<div class="swiper">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide post">
+							<div class="zoom"><a href="Avatar.html"><img class="img1" src="Avatar.jpg" height="220" width="350" alt="Avatar"></a></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Batman.jpg" height="220" width="350" alt="Batman"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Dune.jpg" height="220" width="350" alt="Dune"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="John Wick.jpg" height="220" width="350" alt="John Wick"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Skyfall.jpg" height="220" width="350" alt="Avatar"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Thor.jpg" height="220" width="350" alt="Moana"></div>
+						</div>
+						<div class="swiper-slide post">	
+							<div class="zoom"><img class="img1" src="Spiderman.jpg" height="220" width="350" alt="Moana"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Star Wars.jpg" height="220" width="350" alt="Moana"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<h2 id="b">Bollywood</h2>
+			<div class="recipe-container2">
+				<div class="swiper">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Kala.jpg" height="220" width="350" alt="Kala"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Ek th tiger.jpg" height="220" width="350" alt="Ek Tha Tiger"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Rockstar.jpg" height="220" width="350" alt="Rockstar"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Jab tak hai jaan.jpg" height="220" width="350" alt="Jab Tak Hai Jaan"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Ek Villain.jpg" height="220" width="350" alt="Moana"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="2 States.jpg" height="220" width="350" alt="Moana"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="War.jpg" height="220" width="350" alt="Moana"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<h2 id="a">Animated Movies</h2>
+			<div class="recipe-container2">
+				<div class="swiper">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="rio.jpg" height="220" width="350" alt="Rio"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Zootopia.jpg" height="220" width="350" alt="Zootopia"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="spiderman4.jpg" height="220" width="350" alt="Spiderman"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="Moana.jpg" height="220" width="350" alt="Moana"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="the good diosaur.jpg" height="220" width="350" alt="Moana"></div>
+						</div>
+						<div class="swiper-slide post">
+							<div class="zoom"><img class="img1" src="the incredibles.jpg" height="220" width="350" alt="Moana"></div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		
+		
+		
+		
+
+		<div class="footer">
+			<div class="footertext">
+				<p style="size: 10pt;">Developed by Harish Kumar Mahto</p>
+				<p>
+					<b>Follow me: </b>
+					<a href="https://github.com/HarishMahto" target="_blank"><img src="github.png" height="40px" width="40px"></a>
+					<a href="https://www.linkedin.com/in/harish-mahto-43316b260/" target="_blank"><img src="linkedin.png" height="40px" width="40px"></a>
+					<a href="https://www.instagram.com/imharishhhh/" target="_blank"><img src="instagram.png" height="40px" width="40px"></a>
+				</p>
+			</div>
+		</div>
+
+	</div>
+	
+	</body>
+	    	<script>
+				const postActionsControllers = document.querySelectorAll(
+				".post-actions-controller"
+				);
+				
+				// When post action controllers are clicked, the action content is opened and closed
+				
+				postActionsControllers.forEach((btn) => {
+				btn.addEventListener("click", () => {
+					const targetId = btn.getAttribute("data-target");
+					const postActionsContent = document.getElementById(targetId);
+				
+					if (postActionsContent) {
+					const isVisible = postActionsContent.getAttribute("data-visible");
+				
+					if (isVisible === "false") {
+						postActionsContent.setAttribute("data-visible", "true");
+						postActionsContent.setAttribute("aria-hidden", "false");
+						btn.setAttribute("aria-expanded", "true");
+					} else {
+						postActionsContent.setAttribute("data-visible", "false");
+						postActionsContent.setAttribute("aria-hidden", "true");
+						btn.setAttribute("aria-expanded", "false");
+					}
+					}
+				});
+				});
+				
+				// If the action content is opened, it is closed by clicking outside of it
+				
+				function handleClickOutside(event) {
+				postActionsControllers.forEach((btn) => {
+					const targetId = btn.getAttribute("data-target");
+					const postActionsContent = document.getElementById(targetId);
+				
+					if (postActionsContent && postActionsContent.getAttribute("data-visible") === "true") {
+					if (!postActionsContent.contains(event.target) && event.target !== btn) {
+						postActionsContent.setAttribute("data-visible", "false");
+						postActionsContent.setAttribute("aria-hidden", "true");
+						btn.setAttribute("aria-expanded", "false");
+					}
+					}
+				});
+				}
+				
+				document.addEventListener("click", handleClickOutside);
+				
+				postActionsControllers.forEach((btn) => {
+				btn.addEventListener("click", (event) => {
+					event.stopPropagation();
+				});
+				});
+				
+				const likeBtns = document.querySelectorAll(".post-like");
+				
+				// When the like buttons are clicked, they are colored red or this action is undone
+				
+				likeBtns.forEach((likeBtn) => {
+				likeBtn.addEventListener("click", () => {
+					if (likeBtn.classList.contains("active")) {
+					likeBtn.classList.remove("active");
+					} else {
+					likeBtn.classList.add("active");
+					}
+				});
+				});
+				
+				// Swiper
+				
+				var swiper = new Swiper(".swiper", {
+				grabCursor: true,
+				speed: 400,
+				mousewheel: {
+					invert: true,
+				},
+				scrollbar: {
+					el: ".swiper-scrollbar",
+					draggable: true,
+				},
+				slidesPerView: 1,
+				spaceBetween: 10,
+				// Responsive breakpoints
+				breakpoints: {
+					900: {
+					slidesPerView: 2,
+					spaceBetween: 20,
+					},
+					1200: {
+					slidesPerView: 3,
+					spaceBetween: 20,
+					},
+				},
+				});
+				
+				
+			</script>
+</html>
